@@ -1,9 +1,9 @@
-# lcs
-`lcs` is a Python package for computing longest common subsequences.
+# lcs2
+`lcs2` is a Python package which helps compute the longest common subsequence of a pair of sequences.
 
 ## Installation
 ```
-pip install lcs
+pip install lcs2
 ```
 
 ## Reference
@@ -19,7 +19,7 @@ Calling `lcs_length(a, b)` is somewhat more efficient than simply using `len(lcs
 
 ## Sample Usage
 ```python
-from lcs import lcs, lcs_indices, lcs_length
+from lcs2 import lcs, lcs_indices, lcs_length
 
 a = 'Hello, world!'
 b = 'Foobar'
