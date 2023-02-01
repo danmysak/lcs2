@@ -22,8 +22,8 @@ Calling `lcs_length(a, b)` is somewhat more efficient than simply using `len(lcs
 from lcs import lcs, lcs_indices, lcs_length
 
 a = 'Hello, world!'
-b = 'Foo bar'
+b = 'Foobar'
 print(lcs(a, b))  # ['o', 'o', 'r']
-print(lcs_indices(a, b))  # [(4, 1), (8, 2), (9, 6)]
+print(lcs_indices(a, b))  # [(4, 1), (8, 2), (9, 5)]
 print(lcs_length(a, b))  # 3
 ```
