@@ -1,6 +1,8 @@
 from typing import Iterable, TypeVar
 
 __all__ = [
+    'diff',
+    'diff_ranges',
     'lcs',
     'lcs_indices',
     'lcs_length',
@@ -53,3 +55,28 @@ def lcs_lists(a: list[T], b: list[T]) -> list[T]:
 
 def lcs(a: Iterable[T], b: Iterable[T]) -> list[T]:
     return lcs_lists(list(a), list(b))
+
+
+def diff_ranges_lists(a: list[T], b: list[T]) -> list[tuple[range, range]]:
+    ranges: list[tuple[range, range]] = []
+    a_pos = 0
+    b_pos = 0
+    for a_index, b_index in lcs_indices_lists(a, b) + [(len(a), len(b))]:
+        if a_index > a_pos or b_index > b_pos:
+            ranges.append((range(a_pos, a_index), range(b_pos, b_index)))
+        a_pos = a_index + 1
+        b_pos = b_index + 1
+    return ranges
+
+
+def diff_ranges(a: Iterable[T], b: Iterable[T]) -> list[tuple[range, range]]:
+    return diff_ranges_lists(list(a), list(b))
+
+
+def diff_lists(a: list[T], b: list[T]) -> list[tuple[list[T], list[T]]]:
+    return [([a[i] for i in a_range], [b[i] for i in b_range])
+            for a_range, b_range in diff_ranges_lists(a, b)]
+
+
+def diff(a: Iterable[T], b: Iterable[T]) -> list[tuple[list[T], list[T]]]:
+    return diff_lists(list(a), list(b))
